@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Ali Vahedifar — Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0B0E11;
+            --bg-secondary: #121820;
+            --bg-card: #161D27;
+            --bg-card-hover: #1A2332;
+            --accent: #4A9EBF;
+            --accent-glow: rgba(74, 158, 191, 0.15);
+            --accent-light: #6BB8D4;
+            --text-primary: #E8ECF0;
+            --text-secondary: #9AAAB8;
+            --text-muted: #6B7D8D;
+            --border: rgba(74, 158, 191, 0.12);
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Source Sans 3', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ─── Ambient Background ─── */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .ambient-bg::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(74, 158, 191, 0.06) 0%, transparent 70%);
+            animation: drift 20s ease-in-out infinite;
+        }
+        .ambient-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(74, 158, 191, 0.04) 0%, transparent 70%);
+            animation: drift 25s ease-in-out infinite reverse;
+        }
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(40px, -30px); }
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(20px);
+            background: rgba(11, 14, 17, 0.8);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+        }
+        nav .logo span { color: var(--accent); }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-light); }
+
+        /* ─── Hero Section ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+        }
+        .hero-grid {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-photo-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .photo-frame {
+            position: relative;
+            width: 230px;
+            height: 230px;
+        }
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), transparent 60%);
+            opacity: 0.5;
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            border: 3px solid var(--bg-primary);
+        }
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-light);
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .hero-text h1 {
+            font-family: var(--serif);
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .hero-text .tagline {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.01em;
+        }
+        .hero-text .bio {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .hero-text .bio strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .chip {
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 400;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            background: rgba(74, 158, 191, 0.04);
+            letter-spacing: 0.03em;
+        }
+
+        /* ─── Sections ─── */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-label {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .section-rule {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin-bottom: 2.5rem;
+            border: none;
+        }
+
+        /* ─── Featured Publication ─── */
+        .featured-pub {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(74, 158, 191, 0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-pub::before {
+            content: '★ FEATURED';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            background: rgba(74, 158, 191, 0.1);
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+        }
+        .featured-pub .venue {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .featured-pub .pub-title {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        .featured-pub .authors {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.7rem;
+        }
+        .featured-pub .authors strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .featured-pub .abstract {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ─── Publication List ─── */
+        .pub-item {
+            padding: 1.4rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-item .venue {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+        .pub-item .pub-title {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+        }
+        .pub-item .pub-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .pub-item .pub-title a:hover { color: var(--accent-light); }
+        .pub-item .authors {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .pub-item .authors strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .pub-links {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.6rem;
+        }
+        .pub-links a {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .pub-links a:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        /* ─── Experience ─── */
+        .exp-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .exp-card {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .exp-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(74, 158, 191, 0.25);
+        }
+        .exp-date {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            padding-top: 0.2rem;
+            letter-spacing: 0.02em;
+        }
+        .exp-content h3 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.15rem;
+        }
+        .exp-content .exp-role {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+        .exp-content p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ─── Education ─── */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .edu-card {
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .edu-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(74, 158, 191, 0.25);
+        }
+        .edu-card .degree {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.15rem;
+        }
+        .edu-card .school {
+            font-size: 0.92rem;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        .edu-card .gpa {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+            max-width: 1100px;
+            margin: 2rem auto 0;
+        }
+        footer p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ─── Animations ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-photo-col { order: -1; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text .bio { max-width: 100%; }
+            .hero-chips { justify-content: center; }
+            .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            nav ul { gap: 1rem; }
+            nav a { font-size: 0.75rem; }
+            .featured-pub { padding: 1.5rem; }
+            .featured-pub::before { position: static; display: inline-block; margin-bottom: 0.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav ul { display: none; }
+            .hero { padding: 5rem 1.2rem 3rem; }
+            section { padding: 3rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ambient-bg"></div>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">M<span>.</span>A<span>.</span> Vahedifar</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<section class="hero" id="about">
+    <div class="hero-grid">
+        <div class="hero-photo-col fade-up">
+            <div class="photo-frame">
+                <img src="ali-photo.jpg" alt="Mohammad Ali Vahedifar">
+            </div>
+            <div class="social-links">
+                <a href="https://scholar.google.com/citations?user=ZikkIk4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://arxiv.org/search/?query=Mohammad+Ali+Vahedifar&searchtype=author" target="_blank" title="arXiv"><i class="fas fa-file-alt"></i></a>
+                <a href="https://www.linkedin.com/in/vahedifar/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:vahedifar@ece.au.dk" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="hero-text">
+            <h1 class="fade-up delay-1">Mohammad Ali<br>Vahedifar</h1>
+            <p class="tagline fade-up delay-2">PhD Researcher · Machine Learning · Information Theory</p>
+            <p class="bio fade-up delay-3">
+                PhD student at <strong>Aarhus University</strong>, Department of Electrical and Computer Engineering, 
+                working on continual learning, signal prediction, and Shapley value methods for the Tactile Internet. 
+                Former ML Engineer at <strong>Apple</strong> and <strong>Google</strong>. 
+                Founder of <strong>LoOp</strong>, a logistics optimization company in Denmark.
+            </p>
+            <div class="hero-chips fade-up delay-4">
+                <span class="chip">Continual Learning</span>
+                <span class="chip">Computer Vision</span>
+                <span class="chip">Information Theory</span>
+                <span class="chip">Tactile Internet</span>
+                <span class="chip">Shapley Values</span>
+                <span class="chip">Signal Prediction</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── Publications ─── -->
+<section id="publications">
+    <h2 class="section-label">Publications</h2>
+    <hr class="section-rule">
+
+    <div class="featured-pub">
+        <div class="venue">IEEE INFOCOM 2026 · Main Conference · Tokyo, Japan</div>
+        <div class="pub-title">Discrete Mode Decomposition Meets Shapley Value: Robust Signal Prediction in Tactile Internet</div>
+        <div class="authors"><strong>Mohammad Ali Vahedifar</strong>, Qi Zhang</div>
+        <p class="abstract">
+            A predictive framework integrating Discrete Mode Decomposition (DMD) with Shapley Mode Value (SMV) for accurate haptic signal prediction. DMD decomposes haptic signals into interpretable intrinsic modes, while SMV evaluates each mode's contribution to prediction accuracy — aligned with goal-oriented semantic communication.
+        </p>
+        <div class="pub-links">
+            <a href="https://arxiv.org/abs/2601.05323" target="_blank">arXiv</a>
+            <a href="https://infocom2026.ieee-infocom.org/ieee-infocom-2026-81/pages/accepted-paper-list-main-conference" target="_blank">Conference</a>
+        </div>
+    </div>
+
+    <div class="pub-item">
+        <div class="venue">IEEE MLSP 2025</div>
+        <div class="pub-title"><a href="#">Signal Prediction for Loss Mitigation in Tactile Internet: A Leader-Follower Game-Theoretic Approach</a></div>
+        <div class="authors"><strong>Mohammad Ali Vahedifar</strong>, Qi Zhang</div>
+    </div>
+
+    <div class="pub-item">
+        <div class="venue">IEEE MLSP 2025</div>
+        <div class="pub-title"><a href="#">Shapley-Based Data Valuation with Mutual Information: A Key to Modified K-Nearest Neighbors</a></div>
+        <div class="authors"><strong>Mohammad Ali Vahedifar</strong>, Azim Akhtarshenas, Mohammad Rafatpanah, Maryam Sabbaghian</div>
+    </div>
+
+    <div class="pub-item">
+        <div class="venue">arXiv Preprint 2025</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2503.04638" target="_blank">No Forgetting Learning: Memory-free Continual Learning</a></div>
+        <div class="authors"><strong>Mohammad Ali Vahedifar</strong>, Qi Zhang</div>
+    </div>
+
+    <div class="pub-item">
+        <div class="venue">Under Review · IEEE</div>
+        <div class="pub-title"><a href="https://www.researchgate.net/publication/388030077" target="_blank">Towards Lifelong Deep Learning: A Review of Continual Learning and Unlearning Methods</a></div>
+        <div class="authors"><strong>Mohammad Ali Vahedifar</strong>, Qi Zhang, Alexandros Iosifidis</div>
+    </div>
+
+    <div class="pub-item">
+        <div class="venue">arXiv Preprint 2023</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2310.05269" target="_blank">Federated Learning: A Cutting-Edge Survey of the Latest Advancements and Applications</a></div>
+        <div class="authors">Azim Akhtarshenas, <strong>Mohammad Ali Vahedifar</strong>, Navid Ayoobi, Behrouz Maham, Tohid Alizadeh, Sina Ebrahimi</div>
+    </div>
+</section>
+
+<!-- ─── Experience ─── -->
+<section id="experience">
+    <h2 class="section-label">Experience</h2>
+    <hr class="section-rule">
+
+    <div class="exp-grid">
+        <div class="exp-card">
+            <div class="exp-date">2025 — 2026</div>
+            <div class="exp-content">
+                <h3>Apple</h3>
+                <div class="exp-role">Machine Learning Engineer</div>
+                <p>Applied machine learning research and engineering at Apple, working on large-scale ML systems and model optimization.</p>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-date">2024 — Present</div>
+            <div class="exp-content">
+                <h3>LoOp</h3>
+                <div class="exp-role">Founder · Logistics Optimization</div>
+                <p>Founded a logistics optimization company in Denmark, developing AI-driven solutions for supply chain and route optimization.</p>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-date">2023 — Present</div>
+            <div class="exp-content">
+                <h3>Aarhus University</h3>
+                <div class="exp-role">PhD Researcher · TOAST Doctoral Network</div>
+                <p>Research on Edge Intelligence for Model-Augmented Haptic Teleoperation in Tactile Internet, funded by EU Horizon Europe. Advisor: Prof. Qi Zhang.</p>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-date">Jan — Aug 2022</div>
+            <div class="exp-content">
+                <h3>Google</h3>
+                <div class="exp-role">Machine Learning Engineer</div>
+                <p>Developed and deployed machine learning models at scale, contributing to Google's ML infrastructure and research initiatives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── Education ─── -->
+<section id="education">
+    <h2 class="section-label">Education</h2>
+    <hr class="section-rule">
+
+    <div class="edu-grid">
+        <div class="edu-card">
+            <div class="degree">Ph.D. in Electrical &amp; Computer Engineering</div>
+            <div class="school">Aarhus University, Denmark</div>
+            <div class="gpa">GPA: 4.12 / 4.0 · 2023 — Present</div>
+        </div>
+        <div class="edu-card">
+            <div class="degree">M.Sc.</div>
+            <div class="school">University of Sydney, Australia</div>
+            <div class="gpa">GPA: 3.88 / 4.0</div>
+        </div>
+        <div class="edu-card">
+            <div class="degree">M.Sc.</div>
+            <div class="school">University of Tehran, Iran</div>
+            <div class="gpa"></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Mohammad Ali Vahedifar · <a href="mailto:vahedifar@ece.au.dk">vahedifar@ece.au.dk</a> · Aarhus, Denmark</p>
+</footer>
+
+<script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pub-item, .exp-card, .edu-card, .featured-pub').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
