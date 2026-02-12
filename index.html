@@ -27,7 +27,6 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -180,6 +179,17 @@
             border-color: var(--accent);
             background: var(--accent-glow);
         }
+        .location-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .location-badge i {
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
 
         .hero-text h1 {
             font-family: var(--serif);
@@ -201,11 +211,18 @@
             color: var(--text-secondary);
             max-width: 580px;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
         }
         .hero-text .bio strong {
             color: var(--text-primary);
             font-weight: 600;
+        }
+        .collab-note {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
         }
         .hero-chips {
             display: flex;
@@ -242,6 +259,61 @@
             background: var(--accent);
             margin-bottom: 2.5rem;
             border: none;
+        }
+
+        /* ─── News Section ─── */
+        .news-list {
+            display: grid;
+            gap: 1rem;
+        }
+        .news-item {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.3s;
+            align-items: start;
+        }
+        .news-item:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(91, 163, 217, 0.25);
+        }
+        .news-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            padding-top: 0.15rem;
+        }
+        .news-content {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .news-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .news-content .news-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+        }
+        .badge-accepted {
+            color: #4ADE80;
+            background: rgba(74, 222, 128, 0.1);
+        }
+        .badge-submitted {
+            color: #FBBF24;
+            background: rgba(251, 191, 36, 0.1);
         }
 
         /* ─── Featured Publication ─── */
@@ -480,6 +552,7 @@
             .hero-text .bio { max-width: 100%; }
             .hero-chips { justify-content: center; }
             .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
             nav ul { gap: 1rem; }
             nav a { font-size: 0.75rem; }
             .featured-pub { padding: 1.5rem; }
@@ -502,6 +575,7 @@
         <div class="logo">M<span>.</span>A<span>.</span> Vahedifar</div>
         <ul>
             <li><a href="#about">About</a></li>
+            <li><a href="#news">News</a></li>
             <li><a href="#publications">Publications</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
@@ -518,8 +592,12 @@
             </div>
             <div class="social-links">
                 <a href="https://scholar.google.com/citations?user=ZikkIk4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://github.com/Ali-Vahedifar" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/ali-vahedi-04908518b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="mailto:av@ece.au.dk" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="location-badge">
+                <i class="fas fa-map-marker-alt"></i> Denmark
             </div>
         </div>
         <div class="hero-text">
@@ -531,11 +609,49 @@
                 Former ML Engineer at <strong>Apple</strong> and <strong>Google</strong>. 
                 Founder of <strong>LoOp</strong>, a Logistic Optimizer AI company in Denmark.
             </p>
-            <div class="hero-chips fade-up delay-4">
+            <p class="collab-note fade-up delay-4">I am always open to collaboration!</p>
+            <div class="hero-chips fade-up delay-5">
                 <span class="chip">Continual Learning</span>
                 <span class="chip">Tactile Internet</span>
                 <span class="chip">Signal Processing</span>
                 <span class="chip">Information Theory</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── News ─── -->
+<section id="news">
+    <h2 class="section-label">News</h2>
+    <hr class="section-rule">
+
+    <div class="news-list">
+        <div class="news-item">
+            <div class="news-date">2026</div>
+            <div class="news-content">
+                <span class="news-badge badge-accepted">Accepted</span>
+                <strong>"Shapley Features for Robust Signal Prediction in Tactile Internet"</strong> has been accepted to <strong>ICASSP 2026</strong> in Barcelona, Spain.
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="news-date">2026</div>
+            <div class="news-content">
+                <span class="news-badge badge-accepted">Accepted</span>
+                <strong>"Discrete Mode Decomposition Meets Shapley Value: Robust Signal Prediction in Tactile Internet"</strong> has been accepted to <strong>IEEE INFOCOM 2026</strong> in Tokyo, Japan (18% acceptance rate).
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="news-date">2026</div>
+            <div class="news-content">
+                <span class="news-badge badge-submitted">Submitted</span>
+                3 papers submitted to <strong>ICML 2026</strong>.
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="news-date">2026</div>
+            <div class="news-content">
+                <span class="news-badge badge-submitted">Submitted</span>
+                1 paper submitted to <strong>ACM Computing Surveys</strong>.
             </div>
         </div>
     </div>
@@ -557,6 +673,12 @@
             <a href="https://arxiv.org/abs/2601.05323" target="_blank">arXiv</a>
             <a href="https://infocom2026.ieee-infocom.org/ieee-infocom-2026-81/pages/accepted-paper-list-main-conference" target="_blank">Conference</a>
         </div>
+    </div>
+
+    <div class="pub-item">
+        <div class="venue">ICASSP 2026 · Barcelona, Spain</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2509.21032" target="_blank">Shapley Features for Robust Signal Prediction in Tactile Internet</a></div>
+        <div class="authors"><strong>Mohammad Ali Vahedifar</strong>, Qi Zhang</div>
     </div>
 
     <div class="pub-item">
@@ -663,7 +785,6 @@
 </footer>
 
 <script>
-    // Intersection Observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -673,7 +794,7 @@
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.pub-item, .exp-card, .edu-card, .featured-pub').forEach(el => {
+    document.querySelectorAll('.pub-item, .exp-card, .edu-card, .featured-pub, .news-item').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
